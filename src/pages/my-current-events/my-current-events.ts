@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController,ModalController,  NavParams } from 'ionic-angular';
+import { Event } from '../../models/event';
+import { Events } from '../../providers/providers';
+
+import { Item } from '../../models/item';
+import { Items } from '../../providers/providers';
 
 /**
  * Generated class for the MyCurrentEventsPage page.
@@ -13,9 +18,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-my-current-events',
   templateUrl: 'my-current-events.html',
 })
+
+
+
+
+
 export class MyCurrentEventsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  currentEvents: Event[];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,public events: Events, public modalCtrl: ModalController) {
+    this.currentEvents = this.events.query();
+  }
+
+  /**
+   * Prompt the user to add a new item. This shows our ItemCreatePage in a
+   * modal and then adds the new item to our data source if the user created one.
+   */
+  addEvent() {
+    let addModal = this.modalCtrl.create('ItemCreatePage');
+    addModal.onDidDismiss(item => {
+      if (item) {
+        this.events.add(item);
+      }
+    })
+    addModal.present();
   }
 
   ionViewDidLoad() {

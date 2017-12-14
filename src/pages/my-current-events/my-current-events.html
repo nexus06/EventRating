@@ -5,14 +5,49 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>MyCurrentEvents</ion-title>
-  </ion-navbar>
-
-</ion-header>
+    
+      <ion-navbar>
+        <ion-title>{{ 'LIST_MASTER_TITLE' | translate }}</ion-title>
+    
+        <ion-buttons end>
+          <button ion-button icon-only (click)="addEvent()">
+            <ion-icon name="add"></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-navbar>
+    
+    </ion-header>
 
 
 <ion-content padding>
-
+    <ion-card *ngFor="let item of currentEvents">
+        
+            <ion-item>
+                <h2>{{item.name}}</h2>
+              <ion-avatar item-start>
+                <img [src]="item.profilePic">
+              </ion-avatar>
+              <h2>{{item.about}}</h2>
+              <!-- <p>{{item.date}}</p> -->
+            </ion-item>
+            <ion-row>
+              <ion-col>
+                <button ion-button color="primary" clear small icon-start>
+                    <ion-icon name='thumbs-up'></ion-icon>
+                    12 Likes
+                  </button>
+              </ion-col>
+              <ion-col>
+                <button ion-button color="primary" clear small icon-start>
+                    <ion-icon name='text'></ion-icon>
+                    4 Comments
+                  </button>
+              </ion-col>
+              <ion-col center text-center>
+                <ion-note>
+                  11h ago
+                </ion-note>
+              </ion-col>
+            </ion-row>
+          </ion-card>
 </ion-content>

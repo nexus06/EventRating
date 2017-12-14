@@ -10,6 +10,7 @@ import { Settings } from '../providers/providers';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from '../providers/providers';
 
+
 @Component({
   template: `<ion-menu [content]="content">
     <ion-header>
