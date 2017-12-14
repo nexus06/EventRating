@@ -1,0 +1,48 @@
+{
+  "NAME": "Nombre",
+  "PASSWORD": "Contraseña",
+  "EMAIL": "Email",
+  "LOGIN": "Iniciar sesión",
+  "SIGNUP": "Registrarse",
+
+  "TAB1_TITLE": "Mis eventos",
+  "TAB2_TITLE": "Usuario",
+  "TAB3_TITLE": "Ajustes",
+
+  "MAP_TITLE": "Mapa",
+
+  "TUTORIAL_SLIDE1_TITLE": "Bienvenido/a a EasyRating",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "<b>EasyRating</b> es una utilidad para evaluar facilmente eventos, personalizable y con modelos preconstruid.",
+
+  "TUTORIAL_SLIDE2_TITLE": "Cómo usar EasyRating",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Combina los tipos de emoticonos que quieras y quita los que no. Hemos incluido muchos modelos comunes para la mayoría de los casos.",
+
+  "TUTORIAL_SLIDE3_TITLE": "Empezando",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "¿Necesitas ayuda?",
+
+  "SETTINGS_TITLE": "Ajustes",
+  "SETTINGS_OPTION1": "Opción 1",
+  "SETTINGS_OPTION2": "Opción 2",
+  "SETTINGS_OPTION3": "Opción 3",
+  "SETTINGS_OPTION4": "Opción 4",
+
+  "SETTINGS_PAGE_PROFILE": "Editar Perfil",
+
+  "WELCOME_TITLE": "Bienvenido/a",
+
+  "LOGIN_TITLE": "Iniciar sesión",
+  "LOGIN_ERROR": "No se ha podido iniciar sesión. Por favor revisa la información de la cuenta e inténtalo de nuevo.",
+  "LOGIN_BUTTON": "Iniciar sesión",
+  "SIGNUP_TITLE": "Registro",
+  "SIGNUP_ERROR": "No se ha podido crear la cuenta. Por favor revisa la información de la cuenta e inténtalo de nuevo.",
+  "SIGNUP_BUTTON": "Registrarse",
+
+  "LIST_MASTER_TITLE": "Items",
+
+  "ITEM_CREATE_TITLE": "Nuevo Item",
+  "ITEM_CREATE_CHOOSE_IMAGE": "Añadir Imagen",
+
+  "CARDS_TITLE": "Social",
+
+  "SEARCH_TITLE": "Buscar"
+}
