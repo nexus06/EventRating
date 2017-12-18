@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController,ModalController,  NavParams } from 'ionic-angular';
 import { Event } from '../../models/event';
 import { Events } from '../../providers/providers';
-
+import { EventConnectedProvider } from '../../providers/providers';
 import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
 
@@ -27,7 +27,8 @@ export class MyCurrentEventsPage {
 
   currentEvents: Event[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public events: Events, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public events: Events, 
+    public eventConnected: EventConnectedProvider, public modalCtrl: ModalController) {
     this.currentEvents = this.events.query();
   }
 
@@ -39,7 +40,8 @@ export class MyCurrentEventsPage {
     let addModal = this.modalCtrl.create('ItemCreatePage');
     addModal.onDidDismiss(item => {
       if (item) {
-        this.events.add(item);
+        console.log('ionViewDidLoad MyCurrentEventsPage');
+        this.eventConnected.add(item)
       }
     })
     addModal.present();

@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 
 import { Event } from '../../models/event';
 
+
+import {AngularFireAuth} from 'angularfire2/auth';
+
 @Injectable()
 export class Events {
   events: Event[] = [];
@@ -16,7 +19,7 @@ export class Events {
   constructor() {
     let events = [
       {
-        "name": "Exposición Magnum",
+        "name": "Exposición Magnumsssssssssss",
         "profilePic": "assets/img/speakers/bear.jpg",
         "about": "exposición sobre la agencia de fotografía Magnum."
       },
@@ -79,6 +82,7 @@ export class Events {
     this.events.push(event);
   }
 
+  
   delete(event: Event) {
     this.events.splice(this.events.indexOf(event), 1);
   }

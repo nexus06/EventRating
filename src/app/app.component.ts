@@ -9,6 +9,7 @@ import { MainPage } from '../pages/pages';
 import { Settings } from '../providers/providers';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from '../providers/providers';
+import { EventConnectedProvider } from '../providers/providers';
 
 
 @Component({

@@ -21,6 +21,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FIREBASE_CONFIG } from './app.firebase.config';
+import { DatabaseProvider } from '../providers/database/database';
+import { EventConnectedProvider } from '../providers/event-connected/event-connected';
 
 
 
@@ -79,7 +81,10 @@ export function provideSettings(storage: Storage) {
     StatusBar,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    DatabaseProvider,
+    EventConnectedProvider,
+    
   ]
 })
 export class AppModule { }
