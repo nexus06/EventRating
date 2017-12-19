@@ -3,8 +3,7 @@ import { IonicPage, NavController,ModalController,  NavParams } from 'ionic-angu
 import { Event } from '../../models/event';
 import { Events } from '../../providers/providers';
 import { EventConnectedProvider } from '../../providers/providers';
-import { Item } from '../../models/item';
-import { Items } from '../../providers/providers';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the MyCurrentEventsPage page.
@@ -19,17 +18,17 @@ import { Items } from '../../providers/providers';
   templateUrl: 'my-current-events.html',
 })
 
-
-
-
-
 export class MyCurrentEventsPage {
+
+  items: Observable<any[]>;
 
   currentEvents: Event[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public events: Events, 
     public eventConnected: EventConnectedProvider, public modalCtrl: ModalController) {
-    this.currentEvents = this.events.query();
+      eventConnected.populateMock();
+    this.currentEvents = eventConnected.events;
+    this.items = eventConnected.get().valueChanges();
   }
 
   /**

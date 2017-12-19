@@ -6,7 +6,7 @@ export class DatabaseProvider {
  
   constructor(public afd: AngularFireDatabase) { }
  
-  getShoppingItems() {
+  getItems() {
     return this.afd.list('/events/');
   }
  

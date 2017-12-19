@@ -11,16 +11,70 @@ import { Api } from '../api/api';
 */
 @Injectable()
 export class EventConnectedProvider {
-
-  constructor(public databaseProvider: DatabaseProvider) { }
   
+
+  constructor(public databaseProvider: DatabaseProvider) {
+
+   }
     
+  events: Event[] = [];
+
     add(event: Event) {
       console.log("==========testandroid");
       this.databaseProvider.addItem(event["name"])
     }
+
+    get() {
+      //https://github.com/angular/angularfire2/blob/master/docs/rtdb/lists.md
+      console.log("==========testandroid");
+      return this.databaseProvider.getItems()
+    }
   
     delete(event: Event) {
+
     }
 
+    populateMock(){
+      let events = [
+        {
+          "name": "Exposición Magnumsssssssssss",
+          "profilePic": "assets/img/speakers/bear.jpg",
+          "about": "exposición sobre la agencia de fotografía Magnum."
+        },
+        {
+          "name": "Exposición Charles Chiplin",
+          "profilePic": "assets/img/speakers/cheetah.jpg",
+          "about": "Charlie is a Cheetah."
+        },
+        {
+          "name": "Exposición Donald Duck",
+          "profilePic": "assets/img/speakers/duck.jpg",
+          "about": "Exposición Donald is a Duck."
+        },
+        {
+          "name": "Evento Eva Eagle",
+          "profilePic": "assets/img/speakers/eagle.jpg",
+          "about": "Eva is an Eagle."
+        },
+        {
+          "name": "Ellie Elephant",
+          "profilePic": "assets/img/speakers/elephant.jpg",
+          "about": "Ellie is an Elephant."
+        },
+        {
+          "name": "Molly Mouse",
+          "profilePic": "assets/img/speakers/mouse.jpg",
+          "about": "Molly is a Mouse."
+        },
+        {
+          "name": "Paul Puppy",
+          "profilePic": "assets/img/speakers/puppy.jpg",
+          "about": "Paul is a Puppy."
+        }
+      ];
+  
+      for (let event of events) {
+        this.events.push(new Event(event));
+      }
+    }
 }
