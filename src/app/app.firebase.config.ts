@@ -4,6 +4,6 @@ export const FIREBASE_CONFIG = {
   authDomain: "ratinator-3cc33.firebaseapp.com",
   databaseURL: "https://ratinator-3cc33.firebaseio.com",
   projectId: "ratinator-3cc33",
-  storageBucket: "",
+  storageBucket: "ratinator-3cc33.appspot.com",
   messagingSenderId: "767259266398"
 };

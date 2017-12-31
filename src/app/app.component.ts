@@ -55,15 +55,13 @@ export class MyApp {
     private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen,
     afAuth: AngularFireAuth,
     public curUser: User) {
-
       const authObserver = afAuth.authState.subscribe( user => {
-        if (user) {
-          curUser._loggedIn(user)
-          this.rootPage = MainPage;
-          authObserver.unsubscribe();
-        } else {
-          this.rootPage = FirstRunPage;
-          authObserver.unsubscribe();
+        if (user) {         
+          this.onSignedInInitialize(user);
+          //authObserver.unsubscribe();
+        } else {          
+          this.onSignedOutCleanup();
+          //authObserver.unsubscribe();
         }
       });
 
@@ -74,11 +72,19 @@ export class MyApp {
       this.splashScreen.hide();
     });
     this.initTranslate();
-
-
-    
-
   }
+
+
+  onSignedOutCleanup(){
+    this.curUser.logout();
+    this.rootPage = FirstRunPage;
+  }
+
+  onSignedInInitialize(fireBaseUser){
+    this.curUser._loggedIn(fireBaseUser)
+    this.rootPage = MainPage;
+  }
+
 
   initTranslate() {
     // Set the default language for translation strings, and the current language.

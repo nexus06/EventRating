@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { DatabaseProvider} from './../../providers/database/database';
 import { Event } from '../../models/event';
 import { Api } from '../api/api';
+import { User } from './../../providers/providers';
 
 /*
   Generated class for the EventConnectedProvider provider.
-
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
@@ -15,24 +15,29 @@ export class EventConnectedProvider {
 
   constructor(public databaseProvider: DatabaseProvider) {
 
-   }
+  }
     
   events: Event[] = [];
 
-    add(event: Event) {
+    add(event: Event, user: User) {
       console.log("==========testandroid");
-      this.databaseProvider.addItem(event["name"])
+      this.databaseProvider.addItem(user._user.uid,{"user": user._user.uid,"text": event["name"], "name":event["name"], "rate":0},  event["profilePic"])
     }
 
-    get() {
+    get(user: User) {
       //https://github.com/angular/angularfire2/blob/master/docs/rtdb/lists.md
       console.log("==========testandroid");
-      return this.databaseProvider.getItems()
+      return this.databaseProvider.getItems(user._user.uid)
     }
   
     delete(event: Event) {
 
     }
+
+
+    
+
+
 
     populateMock(){
       let events = [

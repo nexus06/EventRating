@@ -4,6 +4,7 @@ import { Event } from '../../models/event';
 import { Events } from '../../providers/providers';
 import { EventConnectedProvider } from '../../providers/providers';
 import { Observable } from 'rxjs/Observable';
+import { User } from '../../providers/providers';
 
 /**
  * Generated class for the MyCurrentEventsPage page.
@@ -20,15 +21,17 @@ import { Observable } from 'rxjs/Observable';
 
 export class MyCurrentEventsPage {
 
+  //create an observable for new events creation auto refreshing
   items: Observable<any[]>;
 
   currentEvents: Event[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public events: Events, 
-    public eventConnected: EventConnectedProvider, public modalCtrl: ModalController) {
+    public eventConnected: EventConnectedProvider, public modalCtrl: ModalController,
+    public user: User) {
       eventConnected.populateMock();
     this.currentEvents = eventConnected.events;
-    this.items = eventConnected.get().valueChanges();
+    this.items = eventConnected.get(user).valueChanges();
   }
 
   /**
@@ -40,11 +43,25 @@ export class MyCurrentEventsPage {
     addModal.onDidDismiss(item => {
       if (item) {
         console.log('ionViewDidLoad MyCurrentEventsPage');
-        this.eventConnected.add(item)
+        this.eventConnected.add(item, this.user)
       }
     })
     addModal.present();
   }
+
+  logout() {
+    //this.login(this.account.email,this.account.password)
+    this.user.logoutUser().then(
+      data=> {
+       
+      }, 
+      error=>{
+       
+      }
+    )
+  }
+
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyCurrentEventsPage');

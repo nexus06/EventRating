@@ -9,14 +9,15 @@
       <ion-navbar>
         <ion-title>{{ 'LIST_MASTER_TITLE' | translate }}</ion-title>
     
-        <ion-buttons end>
-          <button ion-button icon-only (click)="addEvent()">
-            <ion-icon name="add"></ion-icon>
+        <ion-buttons right>
+         
+          <button  ion-button icon-only menuToggle (click)="logout()">
+            <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
           </button>
         </ion-buttons>
       </ion-navbar>
-    
-    </ion-header>
+
+</ion-header>
 
 
 <ion-content padding>
@@ -50,11 +51,16 @@
               </ion-col>
             </ion-row>
           </ion-card> -->
+           <ion-fab  right bottom #fab1>             
+              <button  ion-fab icon-only (click)="addEvent()">
+                  <ion-icon class="fa fa-plus" aria-hidden="true"></ion-icon>
+             </button> 
+            </ion-fab>
 
           <ion-card *ngFor="let item of items | async">
             
                 <ion-item>
-                    <h2>{{item}}</h2>
+                    <h2>{{item.name}}</h2>
                   <ion-avatar item-start>
                     <img [src]="item.profilePic">
                   </ion-avatar>                 
